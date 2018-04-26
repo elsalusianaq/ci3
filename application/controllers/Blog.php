@@ -21,6 +21,15 @@ class Blog extends CI_Controller {
 		$config['allowed_types'] = 'gif|jpg|png';
 		
 		$this->load->library('upload', $config);
+		$this->form_validation->set_rules('title', 'Judul', 'required|is_unique[blogs.post_title]',
+   			array(
+       			'required'      => 'Isi %s donk, males amat.',
+       			'is_unique'     => 'Judul ' .$this->input->post('title'). ' sudah ada bosque.'
+   			));
+		$this->form_validation->set_rules('text', 'Konten', 'required|min_length[8]',
+   			array(
+       			'required'      => 'Isi %s lah, hadeeh.',
+       			'min_length'    => 'Isi %s kurang panjang bosque.',
 		
 		if ( ! $this->upload->do_upload()){
 			$error = array('error' => $this->upload->display_errors());
@@ -46,6 +55,15 @@ class Blog extends CI_Controller {
 		$config['allowed_types'] = 'gif|jpg|png';
 		
 		$this->load->library('upload', $config);
+		$this->form_validation->set_rules('title', 'Judul', 'required|is_unique[blogs.post_title]',
+   			array(
+       			'required'      => 'Isi %s donk, males amat.',
+       			'is_unique'     => 'Judul ' .$this->input->post('title'). ' sudah ada bosque.'
+   			));
+		$this->form_validation->set_rules('text', 'Konten', 'required|min_length[8]',
+   			array(
+       			'required'      => 'Isi %s lah, hadeeh.',
+       			'min_length'    => 'Isi %s kurang panjang bosque.',
 		
 		if ( ! $this->upload->do_upload()){
 			$error = array('error' => $this->upload->display_errors());
